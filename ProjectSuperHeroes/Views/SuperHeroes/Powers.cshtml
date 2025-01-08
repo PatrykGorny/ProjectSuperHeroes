@@ -1,0 +1,28 @@
+@model IEnumerable<dynamic>
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+
+
+
+<h1>Lista Supermocy</h1>
+
+<table>
+    <thead>
+    <tr>
+        <th>Supermoc</th>
+        <th>Liczba superbohaterów</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var power in Model)
+    {
+        <tr>
+            <td>@power.PowerName</td>
+           <td>x</td>
+        </tr>
+    }
+    </tbody>
+</table>
+

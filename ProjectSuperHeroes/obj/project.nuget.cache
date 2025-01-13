@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "9GDOLSDGKqk=",
+  "dgSpecHash": "HkpPrtPE/I0=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Patryk\\RiderProjects\\ProjectSuperHeroes\\ProjectSuperHeroes\\ProjectSuperHeroes.csproj",
+  "projectFilePath": "C:\\Users\\Patryk\\Desktop\\ProjectSuperHeroes\\ProjectSuperHeroes\\ProjectSuperHeroes.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Patryk\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
     "C:\\Users\\Patryk\\.nuget\\packages\\azure.identity\\1.11.4\\azure.identity.1.11.4.nupkg.sha512",

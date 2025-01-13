@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Patryk\\RiderProjects\\ProjectSuperHeroes\\ProjectSuperHeroes\\ProjectSuperHeroes.csproj": {}
+    "C:\\Users\\Patryk\\Desktop\\ProjectSuperHeroes\\ProjectSuperHeroes\\ProjectSuperHeroes.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Patryk\\RiderProjects\\ProjectSuperHeroes\\ProjectSuperHeroes\\ProjectSuperHeroes.csproj": {
+    "C:\\Users\\Patryk\\Desktop\\ProjectSuperHeroes\\ProjectSuperHeroes\\ProjectSuperHeroes.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Patryk\\RiderProjects\\ProjectSuperHeroes\\ProjectSuperHeroes\\ProjectSuperHeroes.csproj",
+        "projectUniqueName": "C:\\Users\\Patryk\\Desktop\\ProjectSuperHeroes\\ProjectSuperHeroes\\ProjectSuperHeroes.csproj",
         "projectName": "ProjectSuperHeroes",
-        "projectPath": "C:\\Users\\Patryk\\RiderProjects\\ProjectSuperHeroes\\ProjectSuperHeroes\\ProjectSuperHeroes.csproj",
+        "projectPath": "C:\\Users\\Patryk\\Desktop\\ProjectSuperHeroes\\ProjectSuperHeroes\\ProjectSuperHeroes.csproj",
         "packagesPath": "C:\\Users\\Patryk\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Patryk\\RiderProjects\\ProjectSuperHeroes\\ProjectSuperHeroes\\obj\\",
+        "outputPath": "C:\\Users\\Patryk\\Desktop\\ProjectSuperHeroes\\ProjectSuperHeroes\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

@@ -17,47 +17,47 @@ build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = ProjectSuperHeroes
 build_property.RootNamespace = ProjectSuperHeroes
-build_property.ProjectDir = C:\Users\Patryk\RiderProjects\ProjectSuperHeroes\ProjectSuperHeroes\
+build_property.ProjectDir = C:\Users\Patryk\Desktop\ProjectSuperHeroes\ProjectSuperHeroes\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\Patryk\RiderProjects\ProjectSuperHeroes\ProjectSuperHeroes
+build_property.MSBuildProjectDirectory = C:\Users\Patryk\Desktop\ProjectSuperHeroes\ProjectSuperHeroes
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/Patryk/RiderProjects/ProjectSuperHeroes/ProjectSuperHeroes/Views/Home/Index.cshtml]
+[C:/Users/Patryk/Desktop/ProjectSuperHeroes/ProjectSuperHeroes/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Patryk/RiderProjects/ProjectSuperHeroes/ProjectSuperHeroes/Views/Shared/Error.cshtml]
+[C:/Users/Patryk/Desktop/ProjectSuperHeroes/ProjectSuperHeroes/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Patryk/RiderProjects/ProjectSuperHeroes/ProjectSuperHeroes/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/Patryk/Desktop/ProjectSuperHeroes/ProjectSuperHeroes/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Patryk/RiderProjects/ProjectSuperHeroes/ProjectSuperHeroes/Views/SuperHeroes/Create.cshtml]
+[C:/Users/Patryk/Desktop/ProjectSuperHeroes/ProjectSuperHeroes/Views/SuperHeroes/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3VwZXJIZXJvZXNcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Patryk/RiderProjects/ProjectSuperHeroes/ProjectSuperHeroes/Views/SuperHeroes/Powers.cshtml]
+[C:/Users/Patryk/Desktop/ProjectSuperHeroes/ProjectSuperHeroes/Views/SuperHeroes/Powers.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3VwZXJIZXJvZXNcUG93ZXJzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Patryk/RiderProjects/ProjectSuperHeroes/ProjectSuperHeroes/Views/SuperHeroes/SuperHeroes.cshtml]
+[C:/Users/Patryk/Desktop/ProjectSuperHeroes/ProjectSuperHeroes/Views/SuperHeroes/SuperHeroes.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3VwZXJIZXJvZXNcU3VwZXJIZXJvZXMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Patryk/RiderProjects/ProjectSuperHeroes/ProjectSuperHeroes/Views/_ViewImports.cshtml]
+[C:/Users/Patryk/Desktop/ProjectSuperHeroes/ProjectSuperHeroes/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Patryk/RiderProjects/ProjectSuperHeroes/ProjectSuperHeroes/Views/_ViewStart.cshtml]
+[C:/Users/Patryk/Desktop/ProjectSuperHeroes/ProjectSuperHeroes/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Patryk/RiderProjects/ProjectSuperHeroes/ProjectSuperHeroes/Views/Shared/_Layout.cshtml]
+[C:/Users/Patryk/Desktop/ProjectSuperHeroes/ProjectSuperHeroes/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-mpy2g6o5pl

@@ -1,7 +1,7 @@
 @{
     ViewBag.Title = "Rejestracja";
 }
-
+<div class="register">
 <h2>Rejestracja</h2>
 
 <form asp-action="Register" method="post">
@@ -22,3 +22,61 @@
 {
     <div class="alert alert-danger mt-3">@ViewBag.Error</div>
 }
+</div>
+<style>
+   
+    .register{
+        border: 1px solid black;
+        width:400px;
+        height: 500px;
+        background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://bi.im-g.pl/im/57/0e/11/z17886807AMP,-Avengers--Czas-Ultrona---Nick-Fury--Hawkeye--Czar.jpg");
+        color: white;
+        border-radius: 20px;
+        box-shadow: 0px 0px 20px rgba(0,0,0,0.75);
+        background-size: cover;
+        background-position: center ;
+        overflow: hidden;
+        position: absolute; 
+        top: 50%; 
+        left: 50%; 
+        transform: translate(-50%, -50%); 
+        
+    }
+    from{
+        display: block;
+        box-sizing: border-box;
+        padding: 40px;
+        width: 100%;
+        height: 100%;
+        backdrop-filter: brightness(40%);
+        flex-direction: column;  
+        display: flex;
+        gap: 5px;   
+        
+    }
+    h2{
+        font-weight: normal;
+        font-size: 24px;
+        text-shadow: 0px 0px 2px rgba(0,0,0,0.5);
+        margin-bottom: 40px;
+        text-align: center;
+    }
+    label{
+        color: rgba(255,255,255,0.8);
+        text-transform: uppercase;
+        font-size: 10px;
+        letter-spacing: 2px;
+        padding-left: 2px;
+        padding-left: 10px;
+    }
+    input{
+        background: rgba(255,255,255,0.3);
+        height: 40px;
+        line-height: 20px;
+        border-radius: 20px;
+        padding: 0px 20px;
+        border: none;
+        margim-bottom:20px;
+        color: white;
+    }
+</style>

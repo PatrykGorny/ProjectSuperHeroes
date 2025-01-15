@@ -9,7 +9,7 @@ public partial class HeroPower
 
     public int? PowerId { get; set; }
 
-    public virtual Superhero? Hero { get; set; }
+    public virtual Superhero? Hero{ get; set; }
 
     public virtual Superpower? Power { get; set; }
 }

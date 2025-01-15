@@ -60,7 +60,12 @@ public class AccountController : Controller
         ViewBag.SuccessMessage = TempData["SuccessMessage"];
         return View();
     }
-
+    [HttpPost]
+    public async Task<IActionResult> Logout()
+    {
+        await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+        return RedirectToAction("Login");
+    }
 
 
     [HttpGet]
@@ -72,39 +77,28 @@ public class AccountController : Controller
     [HttpPost]
     public IActionResult Register(string email, string password, string returnUrl = null)
     {
-       
+
         var existingUser = users.FirstOrDefault(u => u.Email == email);
         if (existingUser != null)
         {
             ViewBag.Error = "Użytkownik z tym adresem email już istnieje!";
             return View();
         }
-
-       
+        
+        if (!IsPasswordValid(password))
+        {
+            ViewBag.Error = "Hasło musi zawierać co najmniej jedną dużą literę, jeden znak specjalny i cyfrę.";
+            return View();
+        }
         users.Add(new User { Email = email, Password = password });
 
-        
+       
         TempData["SuccessMessage"] = "Pomyślnie zarejestrowano!";
         TempData["ReturnUrl"] = returnUrl;
 
         return RedirectToAction("PostRegister");
     }
-
-
-
-    [HttpPost]
-    public async Task<IActionResult> Logout()
-    {
-        await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
-        return RedirectToAction("Login");
-    }
-
-
-    private class User
-    {
-        public string Email { get; set; }
-        public string Password { get; set; }
-    }
+    
     private bool IsPasswordValid(string password)
     {
         if (string.IsNullOrEmpty(password) || password.Length < 5)
@@ -115,6 +109,11 @@ public class AccountController : Controller
         bool hasDigit = password.Any(char.IsDigit);
 
         return hasUpperCase && hasSpecialChar && hasDigit;
+    }
+    private class User
+    {
+        public string Email { get; set; }
+        public string Password { get; set; }
     }
 
 }

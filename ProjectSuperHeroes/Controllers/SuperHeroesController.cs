@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ProjectSuperHeroes.Models.SuperHeroes;
@@ -33,7 +34,7 @@ public class SuperHeroesController : Controller
     {
         return View();
     }
-
+    [Authorize]
     public IActionResult Create()
     {
         return View();

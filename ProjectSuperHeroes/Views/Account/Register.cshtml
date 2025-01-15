@@ -1,0 +1,24 @@
+@{
+    ViewBag.Title = "Rejestracja";
+}
+
+<h2>Rejestracja</h2>
+
+<form asp-action="Register" method="post">
+    <input type="hidden" name="returnUrl" value="@ViewBag.ReturnUrl" />
+
+    <div class="mb-3">
+        <label for="email" class="form-label">Email:</label>
+        <input type="email" id="email" name="email" class="form-control" required />
+    </div>
+    <div class="mb-3">
+        <label for="password" class="form-label">Hasło:</label>
+        <input type="password" id="password" name="password" class="form-control" required />
+    </div>
+    <button type="submit" class="btn btn-primary">Zarejestruj się</button>
+</form>
+
+@if (ViewBag.Error != null)
+{
+    <div class="alert alert-danger mt-3">@ViewBag.Error</div>
+}

@@ -1,4 +1,4 @@
-@model IEnumerable<ProjectSuperHeroes.Models.SuperHeroes.Superhero>
+@model IEnumerable<ProjectSuperHeroes.Models.SuperPowerViewModel>
 
 @{
     ViewBag.Title = "SuperHeroes";
@@ -8,35 +8,28 @@
     int totalPages = ViewBag.TotalPages;
 }
 
-<h1>SuperHeroes</h1>
-<a asp-action="Create" class="btn btn-primary"  id="btn-green" >Add Superhero</a>
+<h1>SuperPowers</h1>
 
 
 
 <table class="table">
     <thead>
     <tr>
-        <th>@Html.DisplayNameFor(model => model.SuperheroName)</th>
-        <th>@Html.DisplayNameFor(model => model.FullName)</th>
-        <th>@Html.DisplayNameFor(model => model.WeightKg)</th>
-        <th>@Html.DisplayNameFor(model => model.HeightCm)</th>
-        <th>@Html.DisplayNameFor(model => model.Id)</th>
+        <th>@Html.DisplayNameFor(model => model.PowerName)</th>
+        <th>Number of heroes with the same power</th>
     </tr>
     </thead>
     <tbody>
     @foreach (var item in Model)
     {
         <tr>
-            <td>@Html.DisplayFor(modelItem => item.SuperheroName)</td>
-            <td>@Html.DisplayFor(modelItem => item.FullName)</td>
-            <td>@Html.DisplayFor(modelItem => item.WeightKg)</td>
-            <td>@Html.DisplayFor(modelItem => item.HeightCm)</td>
-            <td><a asp-action="Powers" asp-route-id="">Zobacz szczegóły</a>
-            </td>
+            <td>@item.PowerName</td>
+            <td>@item.OccurrenceCount</td>
         </tr>
     }
     </tbody>
 </table>
+
 
 <div class="pagination-container">
     <ul class="pagination">
@@ -139,4 +132,5 @@
        
     }
 </style>
+
 

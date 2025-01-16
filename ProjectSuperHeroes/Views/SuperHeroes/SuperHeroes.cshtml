@@ -9,7 +9,7 @@
 }
 
 <h1>SuperHeroes</h1>
-<a asp-action="Create" class="btn btn-primary"  id="btn-green" >Add Superhero</a>
+<a asp-action="Create" class="button"  id="add" >Add Superhero</a>
 
 
 
@@ -20,7 +20,7 @@
         <th>@Html.DisplayNameFor(model => model.FullName)</th>
         <th>@Html.DisplayNameFor(model => model.WeightKg)</th>
         <th>@Html.DisplayNameFor(model => model.HeightCm)</th>
-        <th>@Html.DisplayNameFor(model => model.Id)</th>
+        <th>Powers</th>
     </tr>
     </thead>
     <tbody>
@@ -31,7 +31,7 @@
             <td>@Html.DisplayFor(modelItem => item.FullName)</td>
             <td>@Html.DisplayFor(modelItem => item.WeightKg)</td>
             <td>@Html.DisplayFor(modelItem => item.HeightCm)</td>
-            <td><a asp-action="Powers" asp-route-id="">Zobacz szczegóły</a>
+            <td><a asp-action="Powers" asp-route-id="@item.Id" class="button">check the power</a>
             </td>
         </tr>
     }
@@ -49,7 +49,7 @@
                 <a class="page-link" asp-action="SuperHeroes" asp-route-page="@(currentPage - 1)">Previous</a>
             </li>
         }
-        
+
         @for (int i = 1; i <= totalPages; i++)
         {
             if (i == currentPage)
@@ -62,7 +62,7 @@
                     <a class="page-link" asp-action="SuperHeroes" asp-route-page="@i">@i</a>
                 </li>
             }
-            
+
             else if (i == 4 && currentPage > 5)
             {
                 <li class="page-item disabled"><span class="page-link">...</span></li>
@@ -72,7 +72,7 @@
                 <li class="page-item disabled"><span class="page-link">...</span></li>
             }
         }
-        
+
         @if (currentPage < totalPages)
         {
             <li class="page-item">
@@ -86,6 +86,26 @@
 </div>
 
 <style>
+    #add:hover{
+        background: url("https://img.freepik.com/free-vector/realistic-electric-ball-abstract-plasma-sphere_107791-508.jpg");
+    }
+    .button{
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: white;
+        text-align: center;
+        text-decoration: none;
+        border-radius: 5px;
+        font-size: 16px;
+        transition: background-color 0.3s ease;
+    }
+
+    .button:hover {
+        background-color: darkgray;
+        color:lightgreen;
+    }
+    
     .pagination-container {
         display: flex;
         justify-content: center;
@@ -96,7 +116,7 @@
         display: inline-flex;
         list-style-type: none;
         padding: 0;
-        margin: 0;
+        margin-bottom: 60px;
     }
 
     .pagination .page-item {
@@ -139,4 +159,3 @@
        
     }
 </style>
-

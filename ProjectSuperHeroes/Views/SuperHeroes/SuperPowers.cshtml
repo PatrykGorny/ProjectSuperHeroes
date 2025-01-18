@@ -1,0 +1,151 @@
+@model IEnumerable<ProjectSuperHeroes.Models.SuperPowerViewModel>
+
+@{
+    ViewBag.Title = "SuperPowers";
+    Layout = "_Layout";
+
+    int currentPage1 = ViewBag.CurrentPage;
+    int totalPages1 = ViewBag.TotalPages;
+}
+<div class="power-container">
+
+    <h3>Powers</h3>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.PowerName)</th>
+            <th>Number of heroes with the same powers</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.PowerName</td>
+                <td>@item.OccurrenceCount</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+    <div class="pagination-container">
+        <ul class="pagination">
+            @if (currentPage1 > 1)
+            {
+                <li class="page-item">
+                    <a class="page-link" asp-action="SuperPowers" asp-route-page="1">First</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" asp-action="SuperPowers" asp-route-page="@(currentPage1 - 1)">Previous</a>
+                </li>
+            }
+
+            @for (int i = 1; i <= totalPages1; i++)
+            {
+                if (i == currentPage1)
+                {
+                    <li class="page-item active"><span class="page-link">@i</span></li>
+                }
+                else if (i <= 3 || i > totalPages1 - 3 || (i >= currentPage1 - 1 && i <= currentPage1 + 1))
+                {
+                    <li class="page-item">
+                        <a class="page-link" asp-action="SuperPowers" asp-route-page="@i">@i</a>
+                    </li>
+                }
+
+                else if (i == 4 && currentPage1 > 5)
+                {
+                    <li class="page-item disabled"><span class="page-link">...</span></li>
+                }
+                else if (i == totalPages1 - 3 && currentPage1 < totalPages1 - 4)
+                {
+                    <li class="page-item disabled"><span class="page-link">...</span></li>
+                }
+            }
+
+            @if (currentPage1 < totalPages1)
+            {
+                <li class="page-item">
+                    <a class="page-link" asp-action="SuperPowers" asp-route-page="@(currentPage1 + 1)">Next</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" asp-action="SuperPowers" asp-route-page="@totalPages1">Last</a>
+                </li>
+            }
+        </ul>
+    </div>
+    
+</div>
+
+<form asp-action="SuperPowers" method="get" class="d-flex align-items-center">
+    <label for="page" class="me-2">Enter page number:</label>
+    <div class="input-group" style="max-width: 200px;">
+        <input id="page" type="number" class="form-control" name="page" min="1" max="@totalPages1" value="@currentPage1" />
+        <button type="submit" class="btn btn-primary">Find</button>
+    </div>
+</form>
+
+
+<style>
+    .me-2,.input-group{
+        margin-bottom: 50px;
+    }
+    h1{
+        font-family: 'Arial', sans-serif;
+        color: #FF5733;
+        
+        font-weight: bold;
+    }
+    .power-container {
+        text-align: center;
+        margin-top: 20px;
+    }
+    .power-list li {
+        margin: 5px 0;
+    }
+    .pagination-container {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+    }
+
+    .pagination {
+        display: inline-flex;
+        list-style-type: none;
+        padding: 0;
+        margin-bottom: 60px;
+    }
+
+    .pagination .page-item {
+        margin: 0 5px;
+    }
+
+    .pagination .page-link {
+        display: inline-block;
+        padding: 8px 12px;
+        text-decoration: none;
+        color: #007bff;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        transition: background-color 0.3s;
+    }
+
+    .pagination .page-link:hover {
+        background-color: #f8f9fa;
+        text-decoration: none;
+    }
+
+    .pagination .page-item.active .page-link {
+        background-color: #007bff;
+        color: white;
+        border-color: #007bff;
+    }
+
+    .pagination .page-item.disabled .page-link {
+        color: #6c757d;
+        background-color: transparent;
+        border-color: transparent;
+        cursor: default;
+    }
+
+  
+</style>

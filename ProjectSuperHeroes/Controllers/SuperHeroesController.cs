@@ -58,6 +58,30 @@ public class SuperHeroesController : Controller
 
         return View(heroPowers);
     }
+    public async Task<IActionResult> SuperPowers(int page = 1, int pageSize = 20)
+    {
+        var totalItems = await _context.Superpowers.CountAsync();
+        
+        var heroPowers = await _context.HeroPowers
+            .Include(hp => hp.Power)
+            .GroupBy(hp => hp.Power.PowerName)
+            .Select(g => new SuperPowerViewModel
+            {
+                PowerName = g.Key,
+                OccurrenceCount = _context.HeroPowers 
+                    .Count(hp => hp.Power.PowerName == g.Key)
+            })
+            .Skip((page - 1) * pageSize)
+            .Take(pageSize)
+            .AsNoTracking()
+            .ToListAsync();
+        
+        ViewBag.CurrentPage = page;
+        ViewBag.TotalPages = (int)Math.Ceiling((double)totalItems / pageSize);
+        ViewBag.PageSize = pageSize;
+        
+        return View(heroPowers);
+    }
     
     [Authorize]
     [HttpGet("SuperHeroes/Create")]
@@ -125,11 +149,9 @@ public IActionResult Create(SuperheroViewModel model)
             PublisherId = model.PublisherId != null ? model.PublisherId : 1,
             AlignmentId = model.AlignmentId != null ? model.AlignmentId:4,
         };
-
-    
+        
         _context.Superheroes.Add(superhero);
         _context.SaveChanges();
-         
         if (model.SelectedPowerIds != null)
         {
             var values = model.SelectedPowerIds
@@ -142,13 +164,8 @@ public IActionResult Create(SuperheroViewModel model)
                 _context.Database.ExecuteSqlRaw(sql);
             }
         }
-
-        
-
         return RedirectToAction("Superheroes"); 
     }
-
-    
     model.Genders = _context.Genders.ToList();
     model.EyeColours = _context.Colours.ToList();
     model.HairColours = _context.Colours.ToList();
@@ -207,8 +224,50 @@ public IActionResult Create(SuperheroViewModel model)
         return View(model);
     }
 
+    [Authorize]
+    public async Task<IActionResult> Delete(int? id)
+    {
+        if (id == null)
+        {
+            return NotFound();
+        }
+
+        var superhero = await _context.Superheroes
+            .FirstOrDefaultAsync(m => m.Id == id);
+        if (superhero == null)
+        {
+            return NotFound();
+        }
+
+        return View(superhero); 
+    }
 
 
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> DeleteConfirmed(int id)
+    {
+        var superhero = await _context.Superheroes.FindAsync(id);
+        if (superhero != null)
+        {
+                await _context.Database.ExecuteSqlInterpolatedAsync($"DELETE FROM hero_power WHERE hero_id = {id}");
+                await _context.Database.ExecuteSqlRawAsync("PRAGMA foreign_keys = OFF;");
+                    
+                    _context.Superheroes.Remove(superhero);
+                await _context.SaveChangesAsync();
+                await _context.Database.ExecuteSqlRawAsync("PRAGMA foreign_keys = ON;");
+               
+            
+        }
+        return RedirectToAction(nameof(SuperHeroes)); 
+    }
 }
+
+    
+    
+
+
+
+
 
 

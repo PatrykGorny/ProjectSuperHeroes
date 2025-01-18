@@ -1,0 +1,103 @@
+@model ProjectSuperHeroes.Models.SuperHeroes.Superhero
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<div class="container-delete">
+    <h2>Delete Superhero</h2>
+    <h3>Are you sure you want to delete this superhero?</h3>
+    <div class="superhero-details">
+        <h4>Superhero Details</h4>
+        
+        <dl class="dl-horizontal">
+            <dt>@Html.DisplayNameFor(model => model.SuperheroName)</dt>
+            <dd>@Html.DisplayFor(model => model.SuperheroName)</dd>
+            <dt>@Html.DisplayNameFor(model => model.FullName)</dt>
+            <dd>@Html.DisplayFor(model => model.FullName)</dd>
+            <dt>@Html.DisplayNameFor(model => model.WeightKg)</dt>
+            <dd>@Html.DisplayFor(model => model.WeightKg)</dd>
+            <dt>@Html.DisplayNameFor(model => model.HeightCm)</dt>
+            <dd>@Html.DisplayFor(model => model.HeightCm)</dd>
+        </dl>
+
+        <form asp-action="DeleteConfirmed">
+            <input type="hidden" asp-for="Id" />
+            <div class="form-actions">
+                <input type="submit" value="Delete" class="btn btn-danger" />
+                <a asp-action="SuperHeroes" class="btn btn-secondary">Back to List</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<style>
+    .container-delete {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #f9f9f9;
+        border-radius: 8px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+    h2, h3 {
+        text-align: center;
+        color: #333;
+    }
+    h3 {
+        font-size: 1.2em;
+        color: #ff4d4d; 
+    }
+    
+    .superhero-details {
+        margin-top: 20px;
+    }
+    dl.dl-horizontal {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: space-between;
+    }
+    dl.dl-horizontal dt {
+        font-weight: bold;
+        color: #555;
+    }
+    dl.dl-horizontal dd {
+        margin: 0;
+        padding: 5px;
+        color: #333;
+    }
+    .form-actions {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 20px;
+    }
+    .form-actions input[type="submit"] {
+        background-color: #ff4d4d;
+        border: none;
+        padding: 10px 20px;
+        color: white;
+        font-size: 1em;
+        cursor: pointer;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+    }
+    .form-actions input[type="submit"]:hover {
+        background-color: #e04343; /* Darker red */
+    }
+    .form-actions .btn-secondary {
+        background-color: #ccc;
+        border: none;
+        padding: 10px 20px;
+        color: #333;
+        font-size: 1em;
+        cursor: pointer;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+    }
+    .form-actions .btn-secondary:hover {
+        background-color: #bbb; /* Darker grey */
+    }
+
+</style>
+

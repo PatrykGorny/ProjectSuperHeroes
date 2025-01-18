@@ -1,8 +1,8 @@
 @{
-    ViewBag.Title = "Rejestracja";
+    ViewBag.Title = "Register";
 }
 <div class="register">
-<h2>Rejestracja</h2>
+<h2>Register</h2>
 
 <form asp-action="Register" method="post">
     <input type="hidden" name="returnUrl" value="@ViewBag.ReturnUrl" />
@@ -12,10 +12,10 @@
         <input type="email" id="email" name="email" class="form-control" required />
     </div>
     <div class="mb-3">
-        <label for="password" class="form-label">Hasło:</label>
+        <label for="password" class="form-label">Password:</label>
         <input type="password" id="password" name="password" class="form-control" required />
     </div>
-    <button type="submit" class="btn btn-primary">Zarejestruj się</button>
+    <button type="submit" class="btn btn-primary">Sign up</button>
 </form>
 
 @if (ViewBag.Error != null)

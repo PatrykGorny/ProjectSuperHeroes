@@ -84,8 +84,18 @@
         }
     </ul>
 </div>
+<form asp-action="SuperHeroes" method="get" class="d-flex align-items-center">
+    <label for="page" class="me-2">Enter page number:</label>
+    <div class="input-group" style="max-width: 200px;">
+        <input id="page" type="number" class="form-control" name="page" min="1" max="@totalPages" value="@currentPage" />
+        <button type="submit" class="btn btn-primary">Find</button>
+    </div>
+</form>
 
 <style>
+    .me-2,.input-group{
+        margin-bottom: 50px;
+    }
     #add:hover{
         background: url("https://img.freepik.com/free-vector/realistic-electric-ball-abstract-plasma-sphere_107791-508.jpg");
     }

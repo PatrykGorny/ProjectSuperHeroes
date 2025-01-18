@@ -42,4 +42,5 @@ public partial class Superhero
     public virtual Race? Race { get; set; }
 
     public virtual Colour? SkinColour { get; set; }
+    
 }

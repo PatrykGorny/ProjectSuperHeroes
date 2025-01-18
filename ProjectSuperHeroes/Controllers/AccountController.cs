@@ -35,13 +35,13 @@ public class AccountController : Controller
             var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
             await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity));
             
-            TempData["SuccessMessage"] = "Zalogowano pomyślnie!";
+            TempData["SuccessMessage"] = "You have logged in successfully!";
             TempData["ReturnUrl"] = returnUrl;
 
             return RedirectToAction("PostLogin");
         }
 
-        ViewBag.Error = "Nieprawidłowy email lub hasło";
+        ViewBag.Error = "Incorrect email or password";
         ViewBag.ReturnUrl = returnUrl;
         return View();
     }
@@ -81,19 +81,19 @@ public class AccountController : Controller
         var existingUser = users.FirstOrDefault(u => u.Email == email);
         if (existingUser != null)
         {
-            ViewBag.Error = "Użytkownik z tym adresem email już istnieje!";
+            ViewBag.Error = "A user with this email address already exists!";
             return View();
         }
         
         if (!IsPasswordValid(password))
         {
-            ViewBag.Error = "Hasło musi zawierać co najmniej jedną dużą literę, jeden znak specjalny i cyfrę.";
+            ViewBag.Error = "The password must contain at least one uppercase letter, one special character, and one number.";
             return View();
         }
         users.Add(new User { Email = email, Password = password });
 
        
-        TempData["SuccessMessage"] = "Pomyślnie zarejestrowano!";
+        TempData["SuccessMessage"] = "Successfully registered!";
         TempData["ReturnUrl"] = returnUrl;
 
         return RedirectToAction("PostRegister");

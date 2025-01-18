@@ -60,21 +60,107 @@ public class SuperHeroesController : Controller
     }
     
     [Authorize]
+    [HttpGet("SuperHeroes/Create")]
     public IActionResult Create()
     {
-        var availablePowers = _context.Superpowers.ToList();
-        ViewBag.AvailablePowers = availablePowers;
-        return View();
+        
+        var viewModel = new SuperheroViewModel
+        {
+            Genders = _context.Genders.ToList(),
+            EyeColours = _context.Colours.ToList(),
+            HairColours = _context.Colours.ToList(),
+            SkinColours = _context.Colours.ToList(),
+            Races = _context.Races.ToList(),
+            Publishers = _context.Publishers.ToList(),
+            Alignments = _context.Alignments.ToList(),
+            Superpowers = _context.Superpowers.ToList() 
+        };
+
+        return View(viewModel);
     }
    
-    [HttpPost]
-    [ValidateAntiForgeryToken]
-    public IActionResult Create(Superhero superhero)
-    { 
-       return View(superhero);
+    [HttpPost("SuperHeroes/Create")]
+    
+public IActionResult Create(SuperheroViewModel model)
+{
+    
+    
+    using (var connection = _context.Database.GetDbConnection())
+    {
+        connection.Open();
+       
+        using (var command = connection.CreateCommand())
+        {
+            command.CommandText = "SELECT IFNULL(MAX(id), 0) + 1 FROM superhero;";
+            var result = command.ExecuteScalar();
+          
+            model.Id = Convert.ToInt32(result);
+        }
     }
-   
-   
+    ModelState.Remove(nameof(model.Genders));
+    ModelState.Remove(nameof(model.EyeColours));
+    ModelState.Remove(nameof(model.HairColours));
+    ModelState.Remove(nameof(model.SkinColours));
+    ModelState.Remove(nameof(model.Races));
+    ModelState.Remove(nameof(model.Publishers));
+    ModelState.Remove(nameof(model.Alignments));
+    ModelState.Remove(nameof(model.Superpowers));
+    ModelState.Remove(nameof(model.Id));
+    
+    if (ModelState.IsValid)
+    {
+        
+        var superhero = new Superhero
+        {
+            Id = model.Id , 
+            SuperheroName = model.SuperheroName,
+            FullName = model.FullName,
+            WeightKg = model.WeightKg,
+            HeightCm = model.HeightCm,
+            GenderId = model.GenderId,
+            EyeColourId = model.EyeColourId,
+            HairColourId = model.HairColourId,
+            SkinColourId = model.SkinColourId,
+            RaceId = model.RaceId,
+            PublisherId = model.PublisherId,
+            AlignmentId = model.AlignmentId
+        };
+
+    
+        _context.Superheroes.Add(superhero);
+        _context.SaveChanges();
+         
+        if (model.SelectedPowerIds != null && model.SelectedPowerIds.Any())
+        {
+            var values = model.SelectedPowerIds
+                .Where(id => id != null)
+                .Select(id => $"({model.Id}, {id})");
+
+            if (values.Any())
+            {
+                var sql = $"INSERT INTO hero_power (hero_id, power_id) VALUES {string.Join(", ", values)}";
+                _context.Database.ExecuteSqlRaw(sql);
+            }
+        }
+
+        
+
+        return RedirectToAction("Superheroes"); 
+    }
+
+    
+    model.Genders = _context.Genders.ToList();
+    model.EyeColours = _context.Colours.ToList();
+    model.HairColours = _context.Colours.ToList();
+    model.SkinColours = _context.Colours.ToList();
+    model.Races = _context.Races.ToList();
+    model.Publishers = _context.Publishers.ToList();
+    model.Alignments = _context.Alignments.ToList();
+    model.Superpowers = _context.Superpowers.ToList();
+
+    return View(model);
+}
+
 
 }
 

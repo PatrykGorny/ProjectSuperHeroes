@@ -41,6 +41,7 @@ public partial class SuperHeroesDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        
         modelBuilder.Entity<Alignment>(entity =>
         {
             entity.ToTable("alignment");
@@ -151,6 +152,7 @@ public partial class SuperHeroesDbContext : DbContext
                 .HasDefaultValueSql("NULL")
                 .HasColumnName("race");
         });
+        
 
         modelBuilder.Entity<Superhero>(entity =>
         {

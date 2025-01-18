@@ -1,9 +1,9 @@
 @{
-    ViewBag.Title = "Logowanie";
+    ViewBag.Title = "Login";
 }
 
 <div class="login">
-    <h2 class="mb-4">Logowanie</h2>
+    <h2 class="mb-4">Login</h2>
     <form asp-action="Login" method="post" class="form">
         <input type="hidden" name="returnUrl" value="@ViewBag.ReturnUrl" />
         <div class="mb-3">
@@ -11,10 +11,10 @@
             <input type="email" id="email" name="email" class="form-control" required />
         </div>
         <div class="mb-3">
-            <label for="password" class="form-label">Hasło:</label>
+            <label for="password" class="form-label">Password:</label>
             <input type="password" id="password" name="password" class="form-control" required />
         </div>
-        <button type="submit" class="btn btn-primary">Zaloguj się</button>
+        <button type="submit" class="btn btn-primary">Log in</button>
     </form>
 
     @if (ViewBag.Error != null)
@@ -24,6 +24,7 @@
 </div>
 
 <style>
+
    
     .login{
         border: 1px solid black;

@@ -29,21 +29,21 @@
                     @if (User.Identity != null && User.Identity.IsAuthenticated)
                     {
                         <li class="nav-item">
-                            <span class="navbar-text me-2">Witaj, @User.Identity.Name!</span>
+                            <span class="navbar-text me-2">Welcome, @User.Identity.Name!</span>
                         </li>
                         <li class="nav-item">
                             <form asp-action="Logout" asp-controller="Account" method="post">
-                                <button type="submit" class="btn btn-outline-danger">Wyloguj</button>
+                                <button type="submit" class="btn btn-outline-danger">log out</button>
                             </form>
                         </li>
                     }
                     else
                     {
                         <li class="nav-item">
-                            <a class="nav-link" href="/Account/Login">Zaloguj</a>
+                            <a class="nav-link" href="/Account/Login">Login</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/Account/Register">Zarejestruj</a>
+                            <a class="nav-link" href="/Account/Register">Register</a>
                         </li>
                     }
                 </ul>
@@ -59,7 +59,7 @@
 
 <footer class="border-top footer text-muted">
     <div class="container">
-        &copy; 2025 - ProjectSuperHeroes 
+        &copy; 2025 - ProjectSuperHeroes - Patryk Górny
     </div>
 </footer>
 <script src="~/lib/jquery/dist/jquery.min.js"></script>

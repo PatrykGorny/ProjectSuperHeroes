@@ -117,20 +117,20 @@ public IActionResult Create(SuperheroViewModel model)
             FullName = model.FullName,
             WeightKg = model.WeightKg,
             HeightCm = model.HeightCm,
-            GenderId = model.GenderId,
-            EyeColourId = model.EyeColourId,
-            HairColourId = model.HairColourId,
-            SkinColourId = model.SkinColourId,
-            RaceId = model.RaceId,
-            PublisherId = model.PublisherId,
-            AlignmentId = model.AlignmentId
+            GenderId = model.GenderId != null ? model.GenderId : 3,
+            EyeColourId = model.EyeColourId != null ? model.EyeColourId:1,
+            HairColourId = model.HairColourId != null ? model.HairColourId : 1,
+            SkinColourId = model.SkinColourId != null ? model.SkinColourId : 1,
+            RaceId = model.RaceId != null ? model.RaceId : 1,
+            PublisherId = model.PublisherId != null ? model.PublisherId : 1,
+            AlignmentId = model.AlignmentId != null ? model.AlignmentId:4,
         };
 
     
         _context.Superheroes.Add(superhero);
         _context.SaveChanges();
          
-        if (model.SelectedPowerIds != null && model.SelectedPowerIds.Any())
+        if (model.SelectedPowerIds != null)
         {
             var values = model.SelectedPowerIds
                 .Where(id => id != null)
@@ -160,6 +160,53 @@ public IActionResult Create(SuperheroViewModel model)
 
     return View(model);
 }
+    public IActionResult Details(int id)
+    {
+        var superhero = _context.Superheroes
+            .Include(s => s.Gender)
+            .Include(s => s.EyeColour)
+            .Include(s => s.HairColour)
+            .Include(s => s.SkinColour)
+            .Include(s => s.Race)
+            .Include(s => s.Publisher)
+            .Include(s => s.Alignment)
+            .FirstOrDefault(s => s.Id == id);
+
+        if (superhero == null)
+        {
+            return NotFound();
+        }
+
+        var model = new SuperheroViewModel
+        {
+            Id = superhero.Id,
+            SuperheroName = superhero.SuperheroName,
+            FullName = superhero.FullName,
+            WeightKg = superhero.WeightKg,
+            HeightCm = superhero.HeightCm,
+            GenderId = superhero.GenderId,
+            EyeColourId = superhero.EyeColourId,
+            HairColourId = superhero.HairColourId,
+            SkinColourId = superhero.SkinColourId,
+            RaceId = superhero.RaceId,
+            PublisherId = superhero.PublisherId,
+            AlignmentId = superhero.AlignmentId,
+            
+
+        
+            Genders = _context.Genders.ToList(),
+            EyeColours = _context.Colours.ToList(),
+            HairColours = _context.Colours.ToList(),
+            SkinColours = _context.Colours.ToList(),
+            Races = _context.Races.ToList(),
+            Publishers = _context.Publishers.ToList(),
+            Alignments = _context.Alignments.ToList(),
+            Superpowers = _context.Superpowers.ToList(),
+        };
+
+        return View(model);
+    }
+
 
 
 }

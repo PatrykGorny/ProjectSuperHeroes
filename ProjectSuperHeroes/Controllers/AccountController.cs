@@ -47,7 +47,7 @@ public class AccountController : Controller
     }
     public IActionResult PostLogin()
     {
-        string returnUrl = TempData["ReturnUrl"] as string ?? Url.Action("Index", "Home");
+        string returnUrl = TempData["ReturnUrl"] as string ?? Url.Action("Superheroes", "SuperHeroes");
         ViewBag.ReturnUrl = returnUrl;
         ViewBag.SuccessMessage = TempData["SuccessMessage"];
         return View();
@@ -55,7 +55,7 @@ public class AccountController : Controller
 
     public IActionResult PostRegister()
     {
-        string returnUrl = TempData["ReturnUrl"] as string ?? Url.Action("Index", "Home");
+        string returnUrl = TempData["ReturnUrl"] as string ?? Url.Action("Superheroes", "SuperHeroes");
         ViewBag.ReturnUrl = returnUrl;
         ViewBag.SuccessMessage = TempData["SuccessMessage"];
         return View();

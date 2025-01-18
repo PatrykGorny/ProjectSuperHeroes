@@ -1,0 +1,83 @@
+@model ProjectSuperHeroes.Models.SuperHeroes.SuperheroViewModel
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "_Layout";
+}
+
+
+<h1>Superhero Details</h1>
+
+<div class="details">
+    <h2>@Model.SuperheroName (@Model.FullName)</h2>
+    <p><strong>Weight:</strong> @(Model.WeightKg.HasValue ? $"{Model.WeightKg} kg" : "N/A")</p>
+    <p><strong>Height:</strong> @(Model.HeightCm.HasValue ? $"{Model.HeightCm} cm" : "N/A")</p>
+    <p><strong>Gender:</strong> @Model.Genders.FirstOrDefault(g => g.Id == Model.GenderId)?.Gender1</p>
+    <p><strong>Eye Colour:</strong> @Model.EyeColours.FirstOrDefault(c => c.Id == Model.EyeColourId)?.Colour1</p>
+    <p><strong>Hair Colour:</strong> @Model.HairColours.FirstOrDefault(c => c.Id == Model.HairColourId)?.Colour1</p>
+    <p><strong>Skin Colour:</strong> @Model.SkinColours.FirstOrDefault(c => c.Id == Model.SkinColourId)?.Colour1</p>
+    <p><strong>Race:</strong> @Model.Races.FirstOrDefault(r => r.Id == Model.RaceId)?.Race1</p>
+    <p><strong>Publisher:</strong> @Model.Publishers.FirstOrDefault(p => p.Id == Model.PublisherId)?.PublisherName</p>
+    <p><strong>Alignment:</strong> @Model.Alignments.FirstOrDefault(a => a.Id == Model.AlignmentId)?.Alignment1</p>
+    <a class="detailsbutton" href="@Url.Action("Superheroes", "SuperHeroes")">Back to List</a>
+    
+</div>
+
+
+
+<style>
+    h1 {
+        color: #2c3e50;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+
+    .details {
+        background-color: #fff;
+        border-radius: 8px;
+        padding: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+
+    h2 {
+        color: #e74c3c;
+        margin-bottom: 15px;
+    }
+
+
+    p {
+        font-size: 16px;
+        line-height: 1.6;
+        margin: 10px 0;
+    }
+
+   
+    strong {
+        color: #2c3e50;
+    }
+
+
+    .detailsbutton {
+        display: inline-block;
+        margin-top: 20px;
+        padding: 10px 15px;
+        background-color: #3498db;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+        display: flex;
+        justify-content: center; 
+        align-items: center; 
+        flex-direction: column;
+
+    }
+
+    .detailsbutton:hover {
+        background-color: #2980b9;
+    }
+</style>
